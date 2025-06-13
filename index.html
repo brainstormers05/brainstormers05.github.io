@@ -546,14 +546,14 @@
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 47, 0.881);
             position: relative;
             z-index: 1;
         }
 
         .copyright-text {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgb(241, 231, 42);
             margin-bottom: 0.5rem;
         }
 
@@ -564,7 +564,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             margin-top: 1rem;
             padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 206, 12, 0.975);
             border-radius: 50px;
             display: inline-block;
             backdrop-filter: blur(5px);
@@ -1093,9 +1093,12 @@
         }
         .gallery-item img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
             display: block;
+            margin: 0 auto;
+            background: #f8f9fa;
             transition: transform 0.3s;
         }
         .gallery-item:hover img {
@@ -1582,6 +1585,29 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeBtn = document.querySelector('.close-btn');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'block';
+                });
+            }
+            if (closeBtn && mobileMenu) {
+                closeBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            }
+            // Hide menu when a link is clicked (for better UX)
+            document.querySelectorAll('.mobile-menu .nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            });
         });
     </script>
 </body>
