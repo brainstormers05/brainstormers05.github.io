@@ -1651,6 +1651,47 @@
                 });
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeBtn = document.querySelector('.close-btn');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'block';
+                });
+            }
+            if (closeBtn && mobileMenu) {
+                closeBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            }
+
+            // Make ALL nav links (desktop and mobile) work for smooth scroll and menu close
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        const targetId = href.slice(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            // Always close mobile menu first
+                            if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
+                                mobileMenu.style.display = 'none';
+                                setTimeout(() => {
+                                    target.scrollIntoView({ behavior: 'smooth' });
+                                }, 200); // Wait for menu to close
+                            } else {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html> 
