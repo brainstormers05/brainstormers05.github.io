@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Choice Group of Schools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #457b9d;
+            --accent: #f1faee;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --gradient-hero: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            --gradient-curriculum: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            --gradient-admissions: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
+            --gradient-activities: linear-gradient(135deg, #36d1c4 0%, #1e3c72 100%);
+            --gradient-events: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            --gradient-testimonials: linear-gradient(135deg, #ffb347 0%, #ffcc33 100%);
+            --gradient-contact: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            --gradient-about: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+            --success: #10b981;
+            --danger: #ef4444;
+            --gray: #64748b;
+            --gradient-1: linear-gradient(135deg, #4f46e5, #7c3aed);
+            --gradient-2: linear-gradient(135deg, #f59e0b, #f97316);
+            --gradient-3: linear-gradient(135deg, #10b981, #059669);
+            --gradient-4: linear-gradient(135deg, #3b82f6, #2563eb);
+            --gradient-5: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            --gradient-6: linear-gradient(135deg, #ec4899, #db2777);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: var(--gradient-1);
+            padding: 0.5rem 0;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: white;
+        }
+
+        .navbar.scrolled .logo {
+            color: white;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a i {
+            font-size: 1.1rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient-2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(0,0,0,0.03)"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: inherit;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-4);
+            border-radius: 3px;
+        }
+
+        .section-title p {
+            color: inherit;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            line-height: 1.6;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.85);
+            color: #222;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-4);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-5);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--gradient-4);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+
+        footer {
+            background: var(--gradient-1);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .copyright-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .copyright-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-text {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .donation-text:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .copyright-year {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .copyright-text {
+                font-size: 1rem;
+            }
+
+            .donation-text {
+                font-size: 1.1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.75rem;
+            }
+
+            .submit-button {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .subject-sections {
+            margin: 2rem 0;
+        }
+
+        .subject-level {
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-level h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .subject-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-group {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-group h5 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .subject-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .subject-group ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--dark);
+        }
+
+        .subject-group ul li:last-child {
+            border-bottom: none;
+        }
+
+        .admission-requirements {
+            margin: 2rem 0;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .requirement-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .requirement-card h5 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirement-card ul li {
+            padding: 0.5rem 0;
+            color: var(--dark);
+        }
+
+        .application-process {
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .application-process h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .application-process ol {
+            padding-left: 1.5rem;
+        }
+
+        .application-process ol li {
+            padding: 0.5rem 0;
+            color: var(--dark);
+        }
+
+        .contact-admissions {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-admissions p {
+            margin: 0.5rem 0;
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .subject-groups {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            z-index: 1001;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu .nav-links a {
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu .nav-links a:last-child {
+            border-bottom: none;
+        }
+
+        .form-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-6);
+        }
+
+        .form-message.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-message h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .form-message p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .form-message .close-message {
+            background: var(--gradient-6);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+
+        .form-message .close-message:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .subject-groups {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .copyright-text {
+                font-size: 0.9rem;
+            }
+
+            .donation-text {
+                font-size: 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on mobile */
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Subject category styles */
+        .subject-category {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .subject-category:hover {
+            transform: translateX(10px);
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .sciences-icon {
+            background: var(--gradient-4);
+        }
+
+        .commercials-icon {
+            background: var(--gradient-2);
+        }
+
+        .arts-icon {
+            background: var(--gradient-6);
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .subject-list {
+            margin-left: 4rem;
+        }
+
+        .subject-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        .subject-list li:hover {
+            color: var(--primary);
+        }
+
+        .subject-list li:last-child {
+            border-bottom: none;
+        }
+
+        .school-logo {
+            height: 48px;
+            width: 48px;
+            object-fit: contain;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .school-logo {
+                height: 36px;
+                width: 36px;
+                margin-right: 0.4rem;
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+        }
+
+        .join-us-btn {
+            background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+            color: #1d3557;
+            font-weight: 700;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.3s, color 0.3s;
+        }
+        .join-us-btn:hover {
+            background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+            color: #ee0979;
+        }
+
+        .gallery-section {
+            background: linear-gradient(135deg, #f1faee 0%, #a8dadc 100%);
+            padding: 4rem 0 3rem 0;
+        }
+        .gallery-section .section-title h2 {
+            color: #1d3557;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            color: #1d3557;
+            font-weight: 500;
+            background: rgba(255,255,255,0.95);
+        }
+        @media (max-width: 600px) {
+            .gallery-item img {
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo.jpg" alt="Best Choice College Logo" class="school-logo">
+                Best Choice     </a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="#curriculum"><i class="fas fa-book"></i> Curriculum</a>
+                <a href="#admissions"><i class="fas fa-user-graduate"></i> Admissions</a>
+                <a href="#activities"><i class="fas fa-running"></i> Activities</a>
+                <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#testimonials"><i class="fas fa-quote-right"></i> Testimonials</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <button class="close-btn">×</button>
+        <div class="nav-links">
+            <a href="#curriculum"><i class="fas fa-book"></i> Curriculum</a>
+            <a href="#admissions"><i class="fas fa-user-graduate"></i> Admissions</a>
+            <a href="#activities"><i class="fas fa-running"></i> Activities</a>
+            <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="#testimonials"><i class="fas fa-quote-right"></i> Testimonials</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="form-message">
+        <h3>Thank You!</h3>
+        <p>Thank you for contacting Best Choice Group of Schools. We shall contact you soon. For now, please explore our services.</p>
+        <button class="close-message">Close</button>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Best Choice Group of Schools</h1>
+            <p>Empowering Students for a Bright Future</p>
+            <a href="#contact" class="cta-button">Join Us Today</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Located in Highfield and Kambuzuma, Harare, we provide quality education and a nurturing environment for our students.</p>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Our Mission</h3>
+                    <p>To provide excellent education and shape future leaders through innovative learning methods.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Our Vision</h3>
+                    <p>To be the leading educational institution in Zimbabwe, known for academic excellence and character development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="section curriculum-section">
+        <div class="section-title">
+            <h2>Our Curriculum</h2>
+            <p>A comprehensive educational journey from Form 1 to Form 6</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon">1-2</div>
+                <h3>Form 1-2</h3>
+                <p>Foundation in core subjects such as Mathematics, English, and Science.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">3-4</div>
+                <h3>Form 3-4</h3>
+                <p>Introduction to elective subjects and preparation for O-Levels.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">5-6</div>
+                <h3>Form 5-6</h3>
+                <p>Advanced studies and A-Level preparation in various disciplines.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="section activities-section">
+        <div class="section-title">
+            <h2>Extracurricular Activities</h2>
+            <p>We believe in a well-rounded education</p>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Sports</h3>
+                    <ul>
+                        <li>Football</li>
+                        <li>Basketball</li>
+                        <li>Athletics</li>
+                        <li>Cricket</li>
+                        <li>Swimming</li>
+                        <li>Tennis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Cultural Clubs</h3>
+                    <ul>
+                        <li>Drama Club</li>
+                        <li>Music Club</li>
+                        <li>Art Club</li>
+                        <li>Dance Club</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Other Activities</h3>
+                    <ul>
+                        <li>Community Service</li>
+                        <li>Debate Club</li>
+                        <li>Science Club</li>
+                        <li>Technology Club</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section events-section">
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+            <p>Join us for these exciting events</p>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Annual Sports Day</h3>
+                    <p>March 20, 2025</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Art Exhibition</h3>
+                    <p>April 15, 2025</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Science Fair</h3>
+                    <p>May 10, 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials-section">
+        <div class="section-title">
+            <h2>Testimonials</h2>
+            <p>Hear from our students and parents</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The Best Choice Group of School has transformed my child's life!"</p>
+                <p class="testimonial-author">- Parent</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I love the variety of activities offered here!"</p>
+                <p class="testimonial-author">- Student</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The teachers are dedicated and truly care about our success."</p>
+                <p class="testimonial-author">- Student</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us</p>
+        </div>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="admissions" class="section admissions-section">
+        <h3>Admissions</h3>
+        <p>Join us for an enriching educational experience. Our curriculum follows the Zimbabwean education system.</p>
+        
+        <div class="subject-sections">
+            <div class="subject-level">
+                <h4>O-Level Subjects (Form 1-4)</h4>
+                <div class="subject-groups">
+                    <div class="subject-group">
+                        <h5>Compulsory Subjects</h5>
+                        <ul>
+                            <li>English Language</li>
+                            <li>Mathematics</li>
+                            <li> Combined  Science</li>
+                            <li>Shona</li>
+                            <li>History</li>
+                            <li>Geography</li>
+                            <li>Bussines Enterprise</li>
+                        </ul>
+                    </div>
+                    <div class="subject-group">
+                        <h5>Optional Subjects</h5>
+                        <ul>
+                            <li>Accounts</li>
+                            <li>Business Studies</li>
+                            <li>Economics</li>
+                            <li>Commerce</li>
+                            <li>Computer Science</li>
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-level">
+                <h4>A-Level Subjects (Form 5-6)</h4>
+                <div class="subject-groups">
+                    <div class="subject-group">
+                        <div class="subject-category">
+                            <div class="category-icon sciences-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h5 class="category-title">Sciences</h5>
+                        </div>
+                        <ul class="subject-list">
+                            <li>Pure Mathematics</li>
+                            <li>Further Mathematics</li>
+                            <li>Physics</li>
+                            <li>Chemistry</li>
+                            <li>Biology</li>
+                            <li>Computer Science</li>
+                            <li>Geography</li>
+                        </ul>
+                    </div>
+                    <div class="subject-group">
+                        <div class="subject-category">
+                            <div class="category-icon commercials-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="category-title">Commercials</h5>
+                        </div>
+                        <ul class="subject-list">
+                            <li>Accounting</li>
+                            <li>Statistics</li>
+                            <li>Business Studies</li>
+                            <li>Economics</li>
+                        </ul>
+                    </div>
+                    <div class="subject-group">
+                        <div class="subject-category">
+                            <div class="category-icon arts-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h5 class="category-title">Arts</h5>
+                        </div>
+                        <ul class="subject-list">
+                            <li>Literature in English</li>
+                            <li>Shona</li>
+                           
+                            <li>History</li>
+                           
+                            <li>Family and Religious Studdies </li>
+                            <li>Heritage</li>
+                            <li>Sociology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admission-requirements">
+            <h4>Admission Requirements</h4>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h5>O-Level Entry</h5>
+                    <ul>
+                        <li>Primary School Leaving Certificate</li>
+                        <li>Birth Certificate</li>
+                        <li>Passport-sized photos</li>
+                        <li>Previous school records</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h5>A-Level Entry</h5>
+                    <ul>
+                        <li>O-Level Certificate with at least 5 passes</li>
+                        <li>Birth Certificate</li>
+                        <li>Passport-sized photos</li>
+                        <li>Previous school records</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="application-process">
+            <h4>Application Process</h4>
+            <ol>
+                <li>Complete the application form</li>
+                <li>Submit required documents</li>
+                <li>Pay application fee</li>
+                <li>Attend interview (if required)</li>
+                <li>Receive admission letter</li>
+            </ol>
+        </div>
+
+        <div class="contact-admissions">
+            <p>For more information about admissions, please contact our admissions office:</p>
+            <p>Email: admissions@bestchoice.edu.zw</p>
+            <p>Phone: +263 123 456 789</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="section-title">
+            <h2>Gallery</h2>
+            <p>Explore moments from our vibrant school life.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/gallery1.jpg" alt="Students at Best Choice College">
+                <div class="gallery-caption">Our students in school uniform</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery2.jpg" alt="Sports Day">
+                <div class="gallery-caption"> A level Class of 2023 Students</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery3.jpg" alt="Classroom Activities">
+                <div class="gallery-caption">Classroom Activities</div>
+            </div>
+            <!-- Add more gallery-item blocks as needed -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@bestchoice.edu.zw</p>
+                <p>Phone: +263 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#curriculum">Curriculum</a></p>
+                <p><a href="#admissions">Admissions</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-section">
+            <p class="copyright-text">&copy; <span class="copyright-year">2025</span> Best Choice Group of Schools. All Rights Reserved.</p>
+            <p class="donation-text">Donated by Brain Stormers, Former A level  Students of 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu .nav-links a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        const formMessage = document.querySelector('.form-message');
+        const closeMessage = document.querySelector('.close-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            contactForm.reset();
+        });
+
+        closeMessage.addEventListener('click', () => {
+            formMessage.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 
