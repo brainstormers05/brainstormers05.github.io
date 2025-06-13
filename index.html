@@ -1612,6 +1612,45 @@
                 });
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeBtn = document.querySelector('.close-btn');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'block';
+                });
+            }
+            if (closeBtn && mobileMenu) {
+                closeBtn.addEventListener('click', function() {
+                    mobileMenu.style.display = 'none';
+                });
+            }
+            // Only fix: Make header links work on mobile and desktop
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        const targetId = href.slice(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            // Close mobile menu first (if open)
+                            if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
+                                mobileMenu.style.display = 'none';
+                                setTimeout(() => {
+                                    target.scrollIntoView({ behavior: 'smooth' });
+                                }, 200); // Wait for menu to close
+                            } else {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html> 
