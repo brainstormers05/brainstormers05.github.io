@@ -765,16 +765,6 @@
             }
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--dark);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
         .mobile-menu {
             display: none;
             position: fixed;
@@ -782,43 +772,191 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.95), rgba(124, 58, 237, 0.95));
+            backdrop-filter: blur(10px);
             z-index: 1001;
             padding: 2rem;
             transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             transform: translateX(0);
+            display: block;
+            animation: menuFadeIn 0.4s ease;
+        }
+
+        @keyframes menuFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .mobile-menu .close-btn {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .mobile-menu .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
         }
 
         .mobile-menu .nav-links {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
+            margin-top: 4rem;
+            padding: 0 1rem;
         }
 
         .mobile-menu .nav-links a {
             color: white;
             font-size: 1.2rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .mobile-menu .nav-links a:last-child {
-            border-bottom: none;
+        .mobile-menu .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .mobile-menu .nav-links a:hover::before {
+            transform: translateX(100%);
+        }
+
+        .mobile-menu .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu .nav-links a i {
+            font-size: 1.4rem;
+            width: 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            position: fixed;
+            right: 1.5rem;
+            top: 1.2rem;
+            z-index: 1100;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .mobile-menu-btn i {
+            font-size: 1.3rem;
+        }
+
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            z-index: 2000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-transition::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .page-transition.active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 1rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .school-logo {
+                height: 35px;
+                width: 35px;
+            }
         }
 
         .form-message {
@@ -1124,7 +1262,9 @@
             <a href="#" class="logo">
                 <img src="images/logo.jpg" alt="Best Choice College Logo" class="school-logo">
                 Best Choice     </a>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="#curriculum"><i class="fas fa-book"></i> Curriculum</a>
                 <a href="#admissions"><i class="fas fa-user-graduate"></i> Admissions</a>
@@ -1506,190 +1646,112 @@
         </div>
         <div class="copyright-section">
             <p class="copyright-text">&copy; <span class="copyright-year">2025</span> Best Choice Group of Schools. All Rights Reserved.</p>
-            <p class="donation-text">Donated by Brain Stormers, Former A level  Students of 2023</p>
+            <p class="donation-text">Developed by Brain Stormers, Former A level  Students of 2023</p>
         </div>
     </footer>
 
+    <div class="page-transition"></div>
+
     <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const closeBtn = document.querySelector('.close-btn');
-        const overlay = document.querySelector('.overlay');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu .nav-links a');
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeBtn = document.querySelector('.close-btn');
+            const pageTransition = document.querySelector('.page-transition');
+            const navLinks = document.querySelectorAll('.nav-links a');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+            // Toggle mobile menu with animation
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    menuBtn.style.opacity = '0';
+                    setTimeout(() => {
+                        menuBtn.style.display = 'none';
+                    }, 300);
+                });
+            }
 
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+            if (closeBtn && mobileMenu) {
+                closeBtn.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    menuBtn.style.display = 'flex';
+                    setTimeout(() => {
+                        menuBtn.style.opacity = '1';
+                    }, 50);
+                });
+            }
 
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+            // Handle navigation with enhanced page transition
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const target = document.getElementById(targetId);
 
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+                        if (target) {
+                            // Show page transition with loading animation
+                            pageTransition.classList.add('active');
 
-        // Form submission handling
-        const contactForm = document.querySelector('.contact-form form');
-        const formMessage = document.querySelector('.form-message');
-        const closeMessage = document.querySelector('.close-message');
+                            // Close mobile menu if open
+                            if (mobileMenu.classList.contains('active')) {
+                                mobileMenu.classList.remove('active');
+                                document.body.style.overflow = '';
+                                menuBtn.style.display = 'flex';
+                                setTimeout(() => {
+                                    menuBtn.style.opacity = '1';
+                                }, 50);
+                            }
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formMessage.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            contactForm.reset();
-        });
-
-        closeMessage.addEventListener('click', () => {
-            formMessage.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href').slice(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    // If mobile menu is open, close it
-                    const mobileMenu = document.querySelector('.mobile-menu');
-                    if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
-                        mobileMenu.style.display = 'none';
+                            // Scroll to target after transition
+                            setTimeout(() => {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                                // Hide page transition
+                                setTimeout(() => {
+                                    pageTransition.classList.remove('active');
+                                }, 500);
+                            }, 500);
+                        }
                     }
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (mobileMenu.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !menuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    menuBtn.style.display = 'flex';
+                    setTimeout(() => {
+                        menuBtn.style.opacity = '1';
+                    }, 50);
                 }
             });
-        });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+            // Handle scroll events with smooth navbar transition
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                const currentScroll = window.scrollY;
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const closeBtn = document.querySelector('.close-btn');
-
-            if (menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'block';
-                });
-            }
-            if (closeBtn && mobileMenu) {
-                closeBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'none';
-                });
-            }
-            // Hide menu when a link is clicked (for better UX)
-            document.querySelectorAll('.mobile-menu .nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.style.display = 'none';
-                });
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const closeBtn = document.querySelector('.close-btn');
-
-            if (menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'block';
-                });
-            }
-            if (closeBtn && mobileMenu) {
-                closeBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'none';
-                });
-            }
-            // Only fix: Make header links work on mobile and desktop
-            document.querySelectorAll('.nav-links a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href.startsWith('#')) {
-                        const targetId = href.slice(1);
-                        const target = document.getElementById(targetId);
-                        if (target) {
-                            e.preventDefault();
-                            // Close mobile menu first (if open)
-                            if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
-                                mobileMenu.style.display = 'none';
-                                setTimeout(() => {
-                                    target.scrollIntoView({ behavior: 'smooth' });
-                                }, 200); // Wait for menu to close
-                            } else {
-                                target.scrollIntoView({ behavior: 'smooth' });
-                            }
-                        }
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                    if (currentScroll > lastScroll) {
+                        navbar.style.transform = 'translateY(-100%)';
+                    } else {
+                        navbar.style.transform = 'translateY(0)';
                     }
-                });
-            });
-        });
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navbar.style.transform = 'translateY(0)';
+                }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hamburger menu functionality
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const closeBtn = document.querySelector('.close-btn');
-
-            if (menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'block';
-                });
-            }
-            if (closeBtn && mobileMenu) {
-                closeBtn.addEventListener('click', function() {
-                    mobileMenu.style.display = 'none';
-                });
-            }
-
-            // Make ALL nav links (desktop and mobile) work for smooth scroll and menu close
-            document.querySelectorAll('.nav-links a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href.startsWith('#')) {
-                        const targetId = href.slice(1);
-                        const target = document.getElementById(targetId);
-                        if (target) {
-                            e.preventDefault();
-                            // Always close mobile menu first
-                            if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
-                                mobileMenu.style.display = 'none';
-                                setTimeout(() => {
-                                    target.scrollIntoView({ behavior: 'smooth' });
-                                }, 200); // Wait for menu to close
-                            } else {
-                                target.scrollIntoView({ behavior: 'smooth' });
-                            }
-                        }
-                    }
-                });
+                lastScroll = currentScroll;
             });
         });
     </script>
