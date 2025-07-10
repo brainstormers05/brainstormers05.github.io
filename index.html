@@ -1301,7 +1301,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Brain Stormers</h1>
-            <p>Empowering Students for a Bright Future</p>
+            <p>Wisdom is attained, not give</p>
             <a href="https://dev-brain-stormerss.pantheonsite.io/admission/" class="cta-button" target="_blank">Join Us Today</a>
         </div>
     </section>
@@ -1311,11 +1311,13 @@
             <p>Access your student dashboard, assignments, and more through our CyberWolf secure login portal.</p>
         </div>
         <div style="text-align:center; margin-top:2rem;">
-            <a id="student-login-portal-btn" href="https://dev-brain-stormerss.pantheonsite.io/"
-                target="_blank" rel="noopener noreferrer"
-                class="cta-button"
-                style="font-size:1.2rem; padding:1rem 2.5rem; display:inline-block;">
-                <i class="fas fa-user-lock"></i> Student Login
+            <a id="portal-login-btn"
+               href="https://dev-brain-stormerss.pantheonsite.io//wp-login.php?redirect_to=https%3A%2F%2Fdev-brain-stormerss.pantheonsite.io%2Fwp-admin%2F&reauth=1"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="cta-button"
+               style="font-size:1.2rem; padding:1rem 2.5rem; display:inline-block;">
+               <i class="fas fa-user-lock"></i> Portal Login
             </a>
         </div>
     </section>
@@ -1761,16 +1763,6 @@
                     e.stopPropagation();
                 });
             });
-
-            // Make Student Login in portal section trigger the header login link click
-            const headerLoginLink = document.querySelector('.nav-links a[href*="wp-login.php"], .nav-links a[href="https://dev-brain-stormerss.pantheonsite.io/"]');
-            const portalLoginBtn = document.getElementById('student-login-portal-btn');
-            if (headerLoginLink && portalLoginBtn) {
-                portalLoginBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    headerLoginLink.click();
-                });
-            }
         });
     </script>
 </body>
