@@ -1301,7 +1301,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Brain Stormers</h1>
-            <p>Wisdom is attained, not give</p>
+            <p>Wisdom is attained, not given</p>
             <a href="https://dev-brain-stormerss.pantheonsite.io/admission/" class="cta-button" target="_blank">Join Us Today</a>
         </div>
     </section>
@@ -1311,14 +1311,12 @@
             <p>Access your student dashboard, assignments, and more through our CyberWolf secure login portal.</p>
         </div>
         <div style="text-align:center; margin-top:2rem;">
-            <a id="portal-login-btn"
-               href="https://dev-brain-stormerss.pantheonsite.io//wp-login.php?redirect_to=https%3A%2F%2Fdev-brain-stormerss.pantheonsite.io%2Fwp-admin%2F&reauth=1"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="cta-button"
-               style="font-size:1.2rem; padding:1rem 2.5rem; display:inline-block;">
-               <i class="fas fa-user-lock"></i> Portal Login
-            </a>
+            <button id="portal-login-btn"
+                    type="button"
+                    class="cta-button"
+                    style="font-size:1.2rem; padding:1rem 2.5rem; display:inline-block;">
+                <i class="fas fa-user-lock"></i> Portal Login
+            </button>
         </div>
     </section>
 
@@ -1763,6 +1761,14 @@
                     e.stopPropagation();
                 });
             });
+
+            // Robust handler for Portal Login button
+            const portalLoginBtn = document.getElementById('portal-login-btn');
+            if (portalLoginBtn) {
+                portalLoginBtn.addEventListener('click', function(e) {
+                    window.open('https://dev-brain-stormerss.pantheonsite.io//wp-login.php?redirect_to=https%3A%2F%2Fdev-brain-stormerss.pantheonsite.io%2Fwp-admin%2F&reauth=1', '_blank', 'noopener');
+                });
+            }
         });
     </script>
 </body>
